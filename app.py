@@ -15,11 +15,8 @@ app = Flask(__name__, template_folder='templates')
 def load_model():
     art = Path('artifacts')
     tuned = art / 'RandomForest_tuned.joblib'
-    default = art / 'RandomForest.joblib'
     if tuned.exists():
         return joblib.load(tuned)
-    if default.exists():
-        return joblib.load(default)
     raise FileNotFoundError('No RandomForest model found in artifacts/')
 
 
