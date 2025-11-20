@@ -1,0 +1,14 @@
+{
+  "best_params": {
+    "n_estimators": 400,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "max_features": "log2",
+    "max_depth": null
+  },
+  "test_metrics": {
+    "mae": 4.6125115305180096,
+    "rmse": 7.7407044022892375,
+    "r2": 0.928954627147318
+  }
+}

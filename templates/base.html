@@ -1,0 +1,40 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Howzat{% endblock %}</title>
+
+    <!-- Main Styles -->
+    <link href="/static/styles.css" rel="stylesheet">
+</head>
+
+<body>
+<header class="site-header">
+    <div class="site-container header-inner">
+        <div class="brand">
+            <div class="logo">IPL</div>
+            <div>
+                <div class="app-title">IPL Insights</div>
+                <div class="app-sub muted">Analytics • Predictions • Knowledge</div>
+            </div>
+        </div>
+        <nav class="site-nav">
+            <a href="/" class="nav-link">Predict</a>
+            <a href="/rag" class="nav-link">IPLX</a>
+        </nav>
+    </div>
+</header>
+
+<main class="site-container">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+    <div class="site-container muted small">© IPL Insights — built with models and data</div>
+</footer>
+
+</body>
+</html>
+

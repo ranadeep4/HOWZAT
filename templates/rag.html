@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}IPLX — IPL Insights{% endblock %}
+
+{% block content %}
+
+<div class="site-card">
+
+    <div class="card-header">
+        <div>
+            <h2>Ask anything about IPL</h2>
+            <p class="sub-text muted">Ask about players, stats, matches or history. Answers include retrieved context.</p>
+        </div>
+        <p class="muted small">Powered by FAISS + Groq</p>
+    </div>
+
+    <form method="POST">
+        <div class="form-group">
+            <textarea name="query" placeholder="e.g. Who scored most runs in IPL 2016?">
+{% if form and form.query %}{{ form.query }}{% endif %}
+            </textarea>
+        </div>
+
+        <div class="action-row">
+            <button class="btn-accent" type="submit">Ask IPLX</button>
+            <p class="muted tiny">Tip: Include year or player name for better results</p>
+        </div>
+    </form>
+
+    {% if error %}
+        <div class="alert error-alert">Error: {{ error }}</div>
+    {% endif %}
+
+    {% if answer %}
+        <div class="answer-box">
+            <h3>Answer</h3>
+            {{ answer }}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
