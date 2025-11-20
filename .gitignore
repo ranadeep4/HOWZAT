@@ -6,7 +6,7 @@ __pycache__/
 .venv/
 
 # Artifacts
-artifacts/
+
 
 # Jupyter
 *.ipynb_checkpoints
