@@ -126,7 +126,8 @@ def fit_transform(train_df: pd.DataFrame, test_df: Optional[pd.DataFrame] = None
         'numeric_cols': numeric_cols,
         'scaler': scaler
     }
-    joblib.dump(artifacts, ARTIFACTS_DIR / 'preprocess_artifacts.joblib')
+    # compress preprocessing artifacts to save space
+    joblib.dump(artifacts, ARTIFACTS_DIR / 'preprocess_artifacts.joblib', compress=3)
 
     return X_train, X_test, y_train.values, (y_test.values if y_test is not None else None), artifacts
 

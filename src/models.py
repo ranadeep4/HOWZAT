@@ -43,7 +43,10 @@ def evaluate_regression(y_true: np.ndarray, y_pred: np.ndarray) -> Dict[str, flo
 
 def save_model(model, name: str):
     path = ARTIFACTS_DIR / f"{name}.joblib"
-    joblib.dump(model, path)
+
+    # 🔥 compress the model to reduce file size
+    joblib.dump(model, path, compress=3)
+
     return path
 
 

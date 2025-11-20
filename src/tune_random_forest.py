@@ -59,7 +59,13 @@ def run(n_iter: int = 40, cv: int = 3):
     # Save model and metrics
     artifacts_dir = Path(__file__).resolve().parents[1] / 'artifacts'
     artifacts_dir.mkdir(exist_ok=True)
-    joblib.dump(best, artifacts_dir / 'RandomForest_tuned.joblib')
+    # use stronger compression (LZMA) to reduce artifact size further
+    # LZMA gives better compression at the cost of slower save/load.
+    try:
+        joblib.dump(best, artifacts_dir / 'RandomForest_tuned.joblib', compress=('lzma', 9))
+    except Exception:
+        # fallback to default joblib compression if LZMA not available
+        joblib.dump(best, artifacts_dir / 'RandomForest_tuned.joblib', compress=3)
     with open('results_tuned.json', 'w', encoding='utf-8') as f:
         json.dump({'best_params': rs.best_params_, 'test_metrics': metrics}, f, indent=2)
 
